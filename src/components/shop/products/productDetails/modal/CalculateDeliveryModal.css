@@ -1,0 +1,140 @@
+.modal-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-modal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: #000000;
+    border: 1px solid #000000;
+    font-size: 16px;
+    color: #fff;
+    height: 40px;
+    width: 10vw;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.btn-modal-close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: #000000;
+    border: 1px solid #000000;
+    font-size: 16px;
+    color: #fff;
+    height: 40px;
+    width: 5vw;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.modal-body input {
+    font-size: 14px;
+    color: #777777;
+    width: 100%;
+    height: 40px;
+    padding: 10px 10px;
+    border: 1px solid #000000;
+    border-radius: 5px 0 0 5px;
+}
+
+.modal-body .modal-address-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.5vw 0vw;
+    gap: 10px;
+}
+
+.form-label-delivery {
+    font-size: 14px;
+    color: #777777;
+}
+
+.closeButton {
+    color: #000;
+    cursor: pointer;
+    position: fixed;
+    top: 0px;
+    right: 15px;
+}
+
+.overlay-calc-modal {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-calc-container {
+    max-width: 600px;
+    width: 100%;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 18px 2px rgba(0, 0, 0, 0.75);
+}
+
+.modalRight {
+    width: 100%;
+}
+
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    padding: 1rem 1rem;
+}
+
+.modal-calc-title {
+    display: flex;
+    align-items: center;
+    padding-left: .8vw;
+    margin: 0 0.7vw;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.delivery-location {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.address-content {
+    display: flex;
+    align-items: center;
+}
+
+.icon-calc-delivery {
+    color: #fff;
+    transform: rotateY(180deg);
+    font-size: 19px;
+}
+
+.footer-calc-modal {
+    display: flex;
+    justify-content: end;
+    padding: .8vw 0vw;
+    border-top: 1px solid #dee2e6;
+}
+
+@media screen and (max-width: 800px) {
+    .modal-calc-container {
+        flex-direction: column;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        height: 100vh;
+    }
+}

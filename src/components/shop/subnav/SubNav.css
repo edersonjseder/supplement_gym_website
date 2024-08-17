@@ -1,0 +1,24 @@
+.shop-nav {
+    display: flex;
+    width: 81.5vw;
+    height: 5vw;
+    border-radius: 5px;
+    margin-left: 17.6vw;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    position: absolute;
+    top: 4.2vw;
+    z-index: 4;
+}
+
+.shop-input {
+    padding: 12px 20px;
+    border: none;
+    background: #f7f6f6;
+    outline: none;
+    margin-right: 20px;
+    border-radius: 5px;
+    position: relative;
+    width: 14rem;
+}

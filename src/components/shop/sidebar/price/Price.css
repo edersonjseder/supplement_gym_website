@@ -1,0 +1,36 @@
+.price-range {
+    margin-left: 0px;
+}
+
+.price-title {
+    margin-top: 20px;
+}
+
+/* Yellow Range Slider */
+.range-slider {
+    width: 80%;
+    background-color: #FF1414;
+}
+
+.range-slider__range {
+    background-color: #FF1414;
+    transition: height 0.3s;
+}
+
+.range-slider__thumb {
+    background-color: #FF1414;
+    transition: transform 0.3s;
+}
+
+.range-slider__thumb[data-active] {
+    transform: translate(-50%, -50%) scale(1.25);
+}
+
+.range-slider__range[data-active] {
+    height: 16px;
+    background-color: #FF1414;
+}
+
+.slide-description {
+    color: #eee
+}
