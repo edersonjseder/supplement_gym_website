@@ -34,9 +34,6 @@ const ProductDetails = () => {
   const handleCloseCalcDelivery = () => setShowCalcDelivery(false);
   const handleShowCalcDelivery = () => setShowCalcDelivery(true);
 
-  console.log("ProductDetails - params: ", id);
-  console.log("ProductDetails: ", product);
-
   const onFlavourChange = (ev) => {
     console.log(
       'document.querySelector(".tooltip-error-message-add-to-cart"): ',
@@ -65,11 +62,6 @@ const ProductDetails = () => {
   };
 
   const handleAddToCart = () => {
-    console.log("ProductDetails - handleAddToCart - flavour: ", flavour);
-    console.log(
-      "ProductDetails - handleAddToCart - flavour??: ",
-      flavour !== ""
-    );
     if (flavour !== "") {
       dispatch(
         addToCart({
@@ -117,7 +109,6 @@ const ProductDetails = () => {
   };
 
   useEffect(() => {
-    console.log("ProductDetails - useEffect");
     dispatch(getProduct(id));
   }, [isError, message, dispatch, id]);
 

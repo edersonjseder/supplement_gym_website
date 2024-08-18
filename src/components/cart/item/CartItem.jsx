@@ -5,7 +5,6 @@ import { changeQuantity } from "../../../redux/features/cart";
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
-  console.log("CartItem - item: ", item);
 
   const handlePlusQuantity = () => {
     dispatch(

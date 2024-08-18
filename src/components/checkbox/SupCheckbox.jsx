@@ -1,11 +1,15 @@
 import { useState } from "react";
-import "./CategoryCheckbox.css";
+import "./SupCheckbox.css";
 
-export const CategoryCheckbox = ({ handleChange, checked, value, title }) => {
+export const SupCheckbox = ({ handleChange, checked, value, title }) => {
   const [isChecked, setIsChecked] = useState(checked);
 
-  const checkHandler = () => {
-    setIsChecked(!isChecked);
+  console.log("supCheckbox checked: ", checked);
+  console.log("supCheckbox value: ", value);
+
+  const checkHandler = (e) => {
+    console.log("supCheckbox e.target.checked: ", e.target.checked);
+    setIsChecked(e.target.checked);
     handleChange(!isChecked ? value : "");
   };
 

@@ -42,8 +42,6 @@ const ProductItemsCart = () => {
   const carts = useSelector((store) => store.cart.items);
   const suggested = useSelector(suggestedProducts);
 
-  console.log("ProductItemsCart - suggestedProducts ====>: ", suggested);
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -96,14 +94,11 @@ const ProductItemsCart = () => {
   };
 
   useEffect(() => {
-    console.log("ProductItemsCart - useEffect - carts: ", carts);
-
     const calcTotals = () => {
       let totals = 0;
       carts.forEach(
         (item) => (totals += Number(item.product.newPrice) * item.quantity)
       );
-      console.log("calcTotals - totals: ", totals);
       setTotal(toCurrency(totals));
     };
 

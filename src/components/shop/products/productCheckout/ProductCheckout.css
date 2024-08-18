@@ -8,6 +8,7 @@
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: uppercase;
+    margin: 0;
 }
 
 #checkout-form label {
@@ -69,6 +70,7 @@
     cursor: pointer;
 }
 
+/* form inputs */
 .form-input {
     background-color: #303245;
     border-radius: 6px;
@@ -146,6 +148,45 @@
     width: 3.7vw;
 }
 
+.form-input-text-area {
+    background-color: #303245;
+    border-radius: 6px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 13px 10px 0;
+    width: 100%;
+    height: 55px;
+    border: 1px solid #a3a3a3;
+}
+.form-input-text-area:focus~.cut,
+.form-input-text-area:not(:placeholder-shown)~.cut {
+    transform: translateY(8px);
+}
+
+.form-input-text-area:focus~.placeholder,
+.form-input-text-area:not(:placeholder-shown)~.placeholder {
+    transform: translateY(-26px) translateX(18px) scale(0.75);
+}
+
+.form-input-text-area:not(:placeholder-shown)~.placeholder {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.form-input-text-area:focus~.placeholder {
+    color: #eee;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+/* form inputs */
+
 .button-row-continue {
     width: 100%;
     height: 2.5vw;
@@ -162,10 +203,10 @@
 }
 
 .button-row-continue:hover {
-    background-color: #1f1a25;
+    background-color: #303346;
     transition: all ease 0.5s;
     color: #ffffff;
-    border: 1px solid #1f1a25;
+    border: 1px solid #303346;
     cursor: pointer;
 }
 
@@ -175,7 +216,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 2.4vw;
+    top: 1.5vw;
     right: 2vw;
     background-color: #FF1414;
     color: #fff;
@@ -210,76 +251,75 @@
 }
 
 /* Shippment type radio */
-.shipment-radio {
-    cursor: pointer;
-}
-
-.shipment-radio input {
-    display: none;
-}
-
-.shipment-radio input:checked+.radio-shipment-btn {
-    border: 3px solid #FF1414;
-}
-
-.shipment-radio input:checked+.radio-shipment-btn>.radio-shipment-check {
-    opacity: 1;
-    transform: translateX(-50%) scale(1);
-}
-
-.radio-shipment-btn {
-    margin: 5px;
-    width: 20vw;
-    height: 45px;
-    border: 1px solid #FF1414;
-    display: inline-block;
-    border-radius: 4px;
-    position: relative;
-    text-align: center;
-    background-color: rgba(224, 0, 0, 0.05);
-    box-shadow: 0 0 20px #c3c3c367;
-}
-
-.radio-shipment-btn:hover {
-    border: 2px solid rgba(255, 2, 2, 0.336);
-}
-
-.radio-shipment-btn .shipment-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 150px;
-    height: 50px;
-    position: absolute;
-    top: 48%;
-    left: 50%;
-    gap: 5px;
-    transform: translate(-50%, -50%);
-}
-
-.radio-shipment-btn .shipment-icons h3 {
-    display: flex;
-    justify-content: center;
-    color: #FF1414;
-    font-family: "Raleway", sans-serif;
-    font-size: 12px;
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-.radio-shipment-check {
-    background-color: #FF1414;
-    color: #fff;
-    font-size: 1.3vw;
-    position: absolute;
-    top: 8px;
-    left: -8%;
-    transform: translateX(-50%) scale(2);
-    border-radius: 50px;
-    padding: 3px;
-    transition: 0.2s;
-    pointer-events: none;
+.shipment-method-radio {
+    background-color: #8A6B6B;
     opacity: 0;
+    z-index: 1;
+    cursor: pointer;
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.radio-item input[type="radio"] {
+    display: flex;
+}
+
+.radio-item + .radio-item {
+    margin-top: 15px;
+}
+
+.radio-item label {
+    color: #eee;
+    display: block;
+    padding: 15px 60px;
+    background: #8A6B6B;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 400;
+    min-width: 250px;
+    white-space: nowrap;
+    position: relative;
+    transition: 0.4s ease-in-out 0s;
+}
+
+.radio-item label:after,
+.radio-item label:before {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+}
+
+.radio-item label:after {
+    height: 19px;
+    width: 19px;
+    border: 2px solid rgba(255, 2, 2, 0.336);
+    left: 19px;
+    top: calc(50% - 12px);
+}
+
+.radio-item label:before {
+    background: #FF1414;
+    height: 20px;
+    width: 20px;
+    left: 21px;
+    top: calc(50%-5px);
+    transform: scale(5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s ease-in-out 0s;
+}
+
+.radio-item [type="radio"]:checked ~ label {
+    border-color: #FF1414;
+}
+
+.radio-item [type="radio"]:checked ~ label::before {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
 }
 /* Shippment type radio */
 
@@ -425,4 +465,57 @@
     color: #ffffff;
     border: 1px solid #1f1a25;
     cursor: pointer;
+}
+
+.label-row-user {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #dee2e6;
+    width: 100%;
+}
+
+/* Checkbox */
+.checkbox-label-checkout input[type="checkbox"] {
+    /* removing default appearance */
+    -webkit-appearance: none;
+    appearance: none;
+    /* creating a custom design */
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 0.15em;
+    margin-right: 0.5em;
+    border: 0.15em solid #FF1414;
+    outline: none;
+    cursor: pointer;
+}
+
+.checkbox-label-checkout input.checked {
+    background-color: #FF1414;
+    position: relative;
+}
+
+.checkbox-label-checkout input.checked::before {
+    content: "\2714";
+    font-size: 2em;
+    border-radius: 50%;
+    color: white;
+    position: absolute;
+    right: -2px;
+    top: -7px;
+}
+
+.checkout-item {
+    color: #c5c5c5;
+}
+/* Checkbox */
+
+.product-checkout-edit {
+    color: #dee2e6;
+    width: 1.4vw;
+    height: 1.4vw;
+    cursor: pointer;
+    position: relative;
+    left: 1.3vw;
+    top: 0.5vw;
 }

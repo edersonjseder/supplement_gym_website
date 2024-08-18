@@ -1,12 +1,21 @@
 import styled from "styled-components";
 
-export const SectionProductCheckout = styled.section`
-  --bs-gutter-x: 1rem;
-  --bs-gutter-y: 0;
-  max-width: 1570px;
+export const SectionItemsColumnCheckout = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 470px;
   width: 100%;
-  padding-right: calc(var(--bs-gutter-x) * 0.5);
-  margin: 5vw 2vw;
+  gap: 1vw;
+`;
+
+export const SectionProductCheckout = styled.section`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  max-width: 470px;
+  width: 100%;
+  gap: 1vw;
 `;
 
 export const SectionDescriptionProductCheckout = styled.section`
@@ -102,7 +111,7 @@ export const DivCheckoutColumn = styled.div`
 
 export const DivCheckoutDataColumn = styled.div`
   display: flex;
-  gap: 15px;
+  gap: 10px;
   flex-direction: column;
   justify-content: center;
   flex: 0 0 auto;
@@ -113,10 +122,18 @@ export const DivCheckoutDataColumn = styled.div`
   background: #a3a3a3;
 `;
 
-export const DivInputRowTitle = styled.div`
+export const DivColTitle = styled.div`
   display: flex;
   flex-direction: column;
   gap: 3px;
+`;
+
+export const DivRowTitle = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.7vw;
 `;
 
 export const DivInputTesteRow = styled.div`
@@ -187,6 +204,14 @@ export const DivRow = styled.div`
   gap: 1vw;
 `;
 
+export const DivLabelsRow = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5vw;
+`;
+
 export const DivCheckoutItemsColumn = styled.div`
   display: flex;
   flex-direction: column;
@@ -214,4 +239,95 @@ export const DivCheckoutProductsRow = styled.div`
   display: flex;
   flex-direction: row;
   gap: 1vw;
+`;
+
+export const RadioButtonLabel = styled.label`
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #8a6b6b;
+  border: 2px solid rgba(255, 2, 2, 0.336);
+  white-space: nowrap;
+  transition: 0.4s ease-in-out 0s;
+  &::before {
+    background: rgba(255, 2, 2, 0.336);
+    height: 20px;
+    width: 20px;
+    transform: scale(5);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.4s ease-in-out 0s;
+  }
+  &::after {
+    height: 19px;
+    width: 19px;
+    border: 2px solid rgba(255, 2, 2, 0.336);
+  }
+`;
+
+export const RadioButton = styled.input`
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+  &:hover ~ ${RadioButtonLabel} {
+    &::after {
+      content: "";
+      position: absolute;
+      display: none;
+      color: #eee;
+      width: 20px;
+      height: 20px;
+      margin: 4px;
+      border: 2px solid #ff1414;
+      border-radius: 50%;
+      top: -5px;
+      left: -5px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      height: 20px;
+      width: 20px;
+      margin: 4px;
+      border: 2px solid #ff1414;
+      border-radius: 50%;
+      background: rgba(255, 2, 2, 0.336);
+      top: -8px;
+      left: -8px;
+    }
+  }
+  &:checked ~ ${RadioButtonLabel} {
+    border-color: #ff1414;
+    background: #ff1414;
+    width: 20px;
+    height: 20px;
+  }
+  &:checked ~ ${RadioButtonLabel}::before {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+`;
+
+export const Item = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  height: 45px;
+  position: relative;
+  border: 2px solid rgba(255, 2, 2, 0.336);
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px 10px;
+  background: #8a6b6b;
+  color: #eee;
+  font-size: 16px;
+  font-weight: 400;
+  min-width: 250px;
+  transition: 0.4s ease-in-out 0s;
 `;

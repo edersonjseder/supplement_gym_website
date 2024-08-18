@@ -5,7 +5,7 @@ import {
   DivCategoryTitle,
 } from "../../../../styles/Styles";
 import { categoriesList } from "../../../../data/categoriesList";
-import { CategoryCheckbox } from "./CategoryCheckbox";
+import { SupCheckbox } from "../../../checkbox/SupCheckbox";
 
 const Category = ({ handleChange }) => {
   return (
@@ -15,7 +15,7 @@ const Category = ({ handleChange }) => {
       </DivCategoryTitle>
       <DivCategoryContent>
         {categoriesList.map((category, index) => (
-          <CategoryCheckbox
+          <SupCheckbox
             key={index}
             handleChange={handleChange}
             checked={false}

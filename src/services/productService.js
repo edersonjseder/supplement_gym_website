@@ -50,7 +50,6 @@ const getSuggestedProducts = async () => {
     }
   }
 
-  console.log("productService - getSuggestedProducts: ", response);
   return response;
 };
 
