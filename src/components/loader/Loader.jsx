@@ -17,7 +17,7 @@ const Loader = () => {
 export const SpinnerImg = () => {
   return (
     <div className="center-all">
-      <img src={loaderImg} alt="Loading..." />
+      <img className="loader-size" src={loaderImg} alt="Loading..." />
     </div>
   );
 };

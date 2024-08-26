@@ -2,12 +2,9 @@ import React, { useEffect } from "react";
 import SlideHero from "../components/home/SlideHero";
 import ContainerPopularProducts from "../components/containers/ContainerPopularProducts";
 import Marquee from "react-fast-marquee";
-import featureImgs from "../data/featureImgs";
-import popularProducts from "../data/popularProducts";
 import ProductCard from "../components/home/ProductCard";
 import CategoryCard from "../components/home/CategoryCard";
 import MarqueeContainer from "../components/containers/MarqueeContainer";
-import brands from "../data/brandItem";
 import services from "../data/services";
 import ServicesContainer from "../components/containers/ServicesContainer";
 import ContainerTopics from "../components/containers/ContainerTopics";
@@ -18,10 +15,18 @@ import { handleToTop } from "../utils/Utils";
 import StepCard from "../components/home/StepCard";
 import BestSellers from "../components/bestSellers/BestSellers";
 import ContainerBestSellers from "../components/containers/ContainerBestSellers";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { getCategories } from "../redux/features/categoriesSlice";
+import { getBrands } from "../redux/features/brandsSlice";
+import { getPopularProducts } from "../redux/features/popularProductsSlice";
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const { categories } = useSelector((state) => state.categories);
+  const { brands } = useSelector((state) => state.brands);
+  const { popularProducts } = useSelector((state) => state.popularProducts);
   const carts = useSelector((store) => store.cart.items);
+
   useEffect(() => {
     document.querySelector(".shopping-cart").style.visibility = "visible";
 
@@ -33,8 +38,12 @@ const Home = () => {
         "hidden";
     }
 
+    dispatch(getCategories());
+    dispatch(getBrands());
+    dispatch(getPopularProducts());
+
     handleToTop();
-  }, [carts]);
+  }, [carts, dispatch]);
   return (
     <>
       <ContainerHero>
@@ -65,7 +74,7 @@ const Home = () => {
           <hr className="line-below-title" />
         </div>
         <div className="a-container">
-          {featureImgs.map((item, index) => (
+          {categories?.map((item, index) => (
             <CategoryCard key={index} image={item.image} title={item.title} />
           ))}
         </div>
@@ -73,9 +82,9 @@ const Home = () => {
       <MarqueeContainer>
         <div className="card-wrapper">
           <Marquee className="mMarquee">
-            {brands.map((brand, index) => (
+            {brands?.map((brand, index) => (
               <div key={index} className="marque-image-item">
-                <img key={index} src={brand.image} alt={brand.number} />
+                <img key={index} src={brand.image} alt={brand.name} />
               </div>
             ))}
           </Marquee>

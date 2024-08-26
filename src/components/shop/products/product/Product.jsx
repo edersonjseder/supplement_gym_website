@@ -13,6 +13,7 @@ import { addToCart } from "../../../../redux/features/cart";
 const Product = ({ product, isFromCart }) => {
   const carts = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
+  console.log("Product: ", product);
 
   const handleAddToCart = () => {
     console.log("Product - Add");
@@ -28,11 +29,11 @@ const Product = ({ product, isFromCart }) => {
     <li data-category="">
       <Link to={`/product/${product.id}`}>
         <picture>
-          <img src={product.img} alt={product.title} />
+          <img src={product.img[0]} alt={product.title} />
         </picture>
       </Link>
       <div className="detail">
-        <p className="item-icon">
+        <div className="item-icon">
           <button>
             <Link
               to={`/product/${product.id}`}
@@ -55,7 +56,7 @@ const Product = ({ product, isFromCart }) => {
               <div style={{ margin: "7.9vw 0vw" }} />
             </div>
           )}
-        </p>
+        </div>
         <DivDetailsContent>
           <strong>{product.title}</strong>
           <section className="card-reviews">

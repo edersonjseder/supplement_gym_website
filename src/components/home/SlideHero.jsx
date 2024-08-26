@@ -1,17 +1,23 @@
-import { useRef, useCallback } from "react";
+import { useRef, useCallback, useEffect } from "react";
 import SwiperCore from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, EffectCoverflow } from "swiper/modules";
-import slideInfo from "../../data/slides";
+import { Navigation, EffectCoverflow, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-coverflow";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import { useSelector, useDispatch } from "react-redux";
+import { getBanners } from "../../redux/features/bannersSlice";
 
 SwiperCore.use([Navigation]);
 
 const SlideHero = () => {
   const sliderRef = useRef(null);
+  const dispatch = useDispatch();
+
+  const { banners, isLoading, isError, message } = useSelector(
+    (state) => state.banners
+  );
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
@@ -23,11 +29,19 @@ const SlideHero = () => {
     sliderRef.current.swiper.slideNext();
   }, []);
 
+  useEffect(() => {
+    dispatch(getBanners());
+  }, [dispatch]);
+
   return (
     <Swiper
       ref={sliderRef}
       loop="true"
-      modules={[EffectCoverflow]}
+      modules={[EffectCoverflow, Autoplay]}
+      autoplay={{
+        delay: 3000,
+        disableOnInteraction: false,
+      }}
       className="home-slider"
       effect={"coverflow"}
       grabCursor={true}
@@ -45,7 +59,7 @@ const SlideHero = () => {
         slideShadows: false,
       }}
     >
-      {slideInfo.map((element, index) => (
+      {banners?.map((element, index) => (
         <SwiperSlide key={index}>
           <img src={element.image} className="box-img" alt="Images" />
           <div className={`slide-image-${index + 1}`}>

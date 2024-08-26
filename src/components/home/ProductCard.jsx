@@ -1,9 +1,10 @@
 import React from "react";
 import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
+import { toCurrency } from "../../utils/Utils";
 
 const ProductCard = ({ grid, product }) => {
-  console.log("TESTE: - ", grid, product);
+  console.log("ProductCard - product: ", product);
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
@@ -20,7 +21,7 @@ const ProductCard = ({ grid, product }) => {
                 <h2>{product.title}</h2>
                 <div className="price">
                   <h3>Price :</h3>
-                  <span>{`$${product.price}`}</span>
+                  <span>{toCurrency(product.price)}</span>
                 </div>
                 <div className="color">
                   <ReactStars

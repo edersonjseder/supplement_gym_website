@@ -371,12 +371,17 @@
 .border-item-checkout-content {
     border: 1px solid #dee2e6;
     border-radius: 3px;
-    padding: 5px 7px;
     margin: 0 0 1vw 0;
     display: flex;
     justify-content: flex-start;
-    align-items: baseline;
-    gap: 6px;
+    flex-direction: column;
+}
+
+.div-border-item-checkout {
+    display: flex;
+    flex-direction: row;
+    padding: 0vw .5vw;
+    gap: 8px;
 }
 
 .item-checkout-total-text-label {
@@ -509,6 +514,12 @@
     color: #c5c5c5;
 }
 /* Checkbox */
+.label-item {
+    color: #dee2e6;
+    letter-spacing: 2px;
+    font-size: 16px;
+    font-weight: 600;
+}
 
 .product-checkout-edit {
     color: #dee2e6;

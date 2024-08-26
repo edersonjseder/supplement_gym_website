@@ -3,7 +3,6 @@ import { Square } from "../../styles/Styles";
 import { Link } from "react-router-dom";
 
 const StepCard = ({ backgroundMenu }) => {
-  console.log("backgroundMenu: ", backgroundMenu);
   return (
     <>
       <Square image={backgroundMenu.image}>

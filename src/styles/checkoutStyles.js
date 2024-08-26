@@ -219,7 +219,7 @@ export const DivCheckoutItemsColumn = styled.div`
   width: auto;
   border-radius: 3px;
   border: 1px solid #fff;
-  margin: 0vw 0vw 1vw 0vw;
+  margin: 1vw 0vw 1vw 0vw;
 `;
 
 export const DivCheckoutItemColumn = styled.div`

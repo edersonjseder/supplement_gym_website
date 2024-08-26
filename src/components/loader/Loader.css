@@ -25,3 +25,8 @@
     margin: auto;
     text-align: center;
 }
+
+.loader-size {
+    width: 5vw;
+    height: 3vw;
+}

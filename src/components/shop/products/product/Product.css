@@ -32,9 +32,9 @@ picture {
 
 picture img {
     width: 12.5rem;
-    height: 8rem;
+    height: 14rem;
     position: relative;
-    bottom: -3vw;
+    bottom: 0vw;
     transform: skewY(-13deg);
     padding: 25px 0 0 0;
 }

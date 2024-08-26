@@ -31,6 +31,8 @@ const ProductDetails = () => {
   const [showCalcDelivery, setShowCalcDelivery] = useState(false);
   const [flavour, setFlavour] = useState("");
 
+  console.log("ProductDetails - product: ", product);
+
   const handleCloseCalcDelivery = () => setShowCalcDelivery(false);
   const handleShowCalcDelivery = () => setShowCalcDelivery(true);
 
@@ -121,23 +123,39 @@ const ProductDetails = () => {
               <div className="product-images-details">
                 <div className="main-product-image">
                   {product?.img ? (
-                    <img src={product.img} alt={product?.title} />
+                    <img src={product.img[0]} alt={product?.title} />
                   ) : (
                     <p>No Image set for this product</p>
                   )}
                 </div>
                 <div className="other-product-images">
                   <div>
-                    <img src={product?.img} className="img-fluid" alt="Watch" />
+                    <img
+                      src={product?.img[0]}
+                      className="img-fluid"
+                      alt="Watch"
+                    />
                   </div>
                   <div>
-                    <img src={product?.img} className="img-fluid" alt="Watch" />
+                    <img
+                      src={product?.img[1]}
+                      className="img-fluid"
+                      alt="Watch"
+                    />
                   </div>
                   <div>
-                    <img src={product?.img} className="img-fluid" alt="Watch" />
+                    <img
+                      src={product?.img[2]}
+                      className="img-fluid"
+                      alt="Watch"
+                    />
                   </div>
                   <div>
-                    <img src={product?.img} className="img-fluid" alt="Watch" />
+                    <img
+                      src={product?.img[1]}
+                      className="img-fluid"
+                      alt="Watch"
+                    />
                   </div>
                 </div>
               </div>
@@ -158,7 +176,7 @@ const ProductDetails = () => {
                     />
                     <p className="t-review">{product?.reviews}</p>
                   </div>
-                  {true ? (
+                  {product?.inStock ? (
                     <span className="in-stock">
                       <FaCheck className="in-stock-check" />
                       In Stock. Fast Delivery
@@ -181,8 +199,8 @@ const ProductDetails = () => {
                             <input
                               type="radio"
                               name="radio"
-                              value={item.flavor}
-                              checked={flavour === item.flavor}
+                              value={item.name}
+                              checked={flavour === item.name}
                               onChange={(e) => onFlavourChange(e)}
                             />
                             <span className="radio-flavour-btn">
@@ -193,7 +211,7 @@ const ProductDetails = () => {
                                   alt="cacau"
                                   className="flavour-icon-img"
                                 />
-                                <h3>{item.flavor}</h3>
+                                <h3>{item.name}</h3>
                               </div>
                             </span>
                           </label>

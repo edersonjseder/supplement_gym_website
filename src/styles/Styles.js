@@ -238,6 +238,8 @@ export const DivDetailsContent = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  bottom: -1.3vw;
 `;
 
 export const DivDetailsButton = styled.div`

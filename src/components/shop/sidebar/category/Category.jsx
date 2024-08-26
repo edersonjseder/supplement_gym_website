@@ -4,23 +4,26 @@ import {
   DivCategoryContent,
   DivCategoryTitle,
 } from "../../../../styles/Styles";
-import { categoriesList } from "../../../../data/categoriesList";
 import { SupCheckbox } from "../../../checkbox/SupCheckbox";
+import { useSelector } from "react-redux";
 
 const Category = ({ handleChange }) => {
+  const categories = useSelector((store) => store.categories.categories);
+
+  console.log("Category - categories: ", categories);
   return (
     <div>
       <DivCategoryTitle>
         <h2 className="sidebar-title">Category</h2>
       </DivCategoryTitle>
       <DivCategoryContent>
-        {categoriesList.map((category, index) => (
+        {categories.map((category, index) => (
           <SupCheckbox
             key={index}
             handleChange={handleChange}
             checked={false}
-            value={category.value}
-            title={category.name}
+            value={category.title}
+            title={category.title}
           />
         ))}
       </DivCategoryContent>

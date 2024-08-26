@@ -12,7 +12,6 @@ import {
   DivCheckoutRowButton,
   DivColTitle,
   DivInputNameRow,
-  DivInputRowTitle,
   DivInputTesteRow,
   DivLabelsRow,
   DivRow,
@@ -65,7 +64,7 @@ const initialState = {
 const ProductCheckout = () => {
   const formData = new FormData();
   const [billingDetails, setBillingDetails] = useState(initialState);
-  const [showUserDataFields, setShowUserDataFields] = useState(false);
+  const [showUserDataFields, setShowUserDataFields] = useState(true);
   const [showShippingFields, setShowShippingFields] = useState(false);
   const [showShipmentMethod, setShowShipmentMethod] = useState(false);
   const [showPayerAddress, setShowPayerAddress] = useState(false);
@@ -154,6 +153,8 @@ const ProductCheckout = () => {
         setPaymentMethodComplete(false);
         setShowPaymentMethod(false);
         setIsSameAddress(false);
+        setConfirmationComplete(false);
+        setShowConfirmation(false);
         break;
       case 2:
         setUserDataComplete(true);
@@ -165,6 +166,8 @@ const ProductCheckout = () => {
         setShowShipmentMethod(false);
         setPaymentMethodComplete(false);
         setShowPaymentMethod(false);
+        setConfirmationComplete(false);
+        setShowConfirmation(false);
         break;
       case 3:
         setShowPayerAddress(true);
@@ -173,16 +176,22 @@ const ProductCheckout = () => {
         setShipmentMethodComplete(false);
         setShowShipmentMethod(false);
         setPaymentMethodComplete(false);
+        setConfirmationComplete(false);
+        setShowConfirmation(false);
         break;
       case 4:
         setShowShipmentMethod(true);
         setShipmentMethodComplete(false);
         setPaymentMethodComplete(false);
         setShowPaymentMethod(false);
+        setConfirmationComplete(false);
+        setShowConfirmation(false);
         break;
       case 5:
         setShowPaymentMethod(true);
         setPaymentMethodComplete(false);
+        setConfirmationComplete(false);
+        setShowConfirmation(false);
         setConfirmationComplete(false);
         setShowConfirmation(false);
         break;
@@ -294,7 +303,7 @@ const ProductCheckout = () => {
                         />
                       )}
                     </DivRowTitle>
-                    {showUserDataFields ? (
+                    {showUserDataFields && (
                       <DivRow>
                         <DivInputTesteRow>
                           <input
@@ -363,8 +372,6 @@ const ProductCheckout = () => {
                           </button>
                         </DivRowContinueButton>
                       </DivRow>
-                    ) : (
-                      <div />
                     )}
                     {userDataComplete && (
                       <DivLabelsRow>
@@ -528,7 +535,7 @@ const ProductCheckout = () => {
                         </DivLabelsRow>
                       )
                     ) : (
-                      <div />
+                      <div className="label-item">Shipping Address</div>
                     )}
                   </DivCheckoutDataColumn>
                 </DivCartRow>
@@ -631,7 +638,7 @@ const ProductCheckout = () => {
                         </DivRowContinueButton>
                       </DivRow>
                     ) : (
-                      <div />
+                      <div className="label-item">Payer Address</div>
                     )}
                     {payerAddressComplete ? (
                       isSameAddress ? (
@@ -719,7 +726,7 @@ const ProductCheckout = () => {
                   </DivRowContinueButton>
                 </DivRow>
               ) : (
-                <div />
+                <div className="label-item">Shipment Method</div>
               )}
               {shipmentMethodComplete ? (
                 <DivLabelsRow>
@@ -773,7 +780,7 @@ const ProductCheckout = () => {
                   </DivRowContinueButton>
                 </DivRow>
               ) : (
-                <div />
+                <div className="label-item">Payment Method</div>
               )}
               {paymentMethodComplete ? (
                 <DivLabelsRow>
@@ -797,7 +804,7 @@ const ProductCheckout = () => {
                   <span className="product-checkout-icon">6</span>
                   <h1 className="billing-details-title">Confirmation</h1>
                 </DivColTitle>
-                {showConfirmation && (
+                {showConfirmation ? (
                   <DivRow>
                     <DivInputTesteRow>
                       <input
@@ -819,6 +826,8 @@ const ProductCheckout = () => {
                       </button>
                     </div>
                   </DivRow>
+                ) : (
+                  <div className="label-item">Confirmation</div>
                 )}
               </DivCheckoutDataColumn>
             </div>
@@ -883,8 +892,8 @@ const ProductCheckout = () => {
                   <div className="cupom-item-checkout-content">
                     <input
                       type="text"
-                      name="zipcode"
-                      value={zipCode}
+                      name="cupom"
+                      value={""}
                       onChange={handleInputChange}
                       autoFocus
                     />
@@ -897,10 +906,19 @@ const ProductCheckout = () => {
               </div>
             </form>
             <div className="border-item-checkout-content">
-              <h3 className="item-checkout-total-text-label">Sub-total:</h3>
-              <h3 className="item-checkout-total-text-amount">{`${toCurrency(
-                checkTotal
-              )}`}</h3>
+              <div className="div-border-item-checkout">
+                <h3 className="item-checkout-total-text-label">Sub-total:</h3>
+                <h3 className="item-checkout-total-text-amount">{`${toCurrency(
+                  checkTotal
+                )}`}</h3>
+              </div>
+              <span className="border-bottom-checkout-item" />
+              <div className="div-border-item-checkout">
+                <h3 className="item-checkout-total-text-label">Total:</h3>
+                <h3 className="item-checkout-total-text-amount">{`${toCurrency(
+                  checkTotal
+                )}`}</h3>
+              </div>
             </div>
             <DivCheckoutRowButton>
               <button className="button-item-checkout-edit-cart">
